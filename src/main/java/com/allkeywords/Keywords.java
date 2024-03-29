@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -11,12 +12,15 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 
 import com.allkeywords.customerror.BrowserNameError;
 
 public class Keywords {
 	public static RemoteWebDriver driver;
 	public FluentWait<WebDriver> wait;
+
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	public void openBrowser(String browserName) {
 		if (browserName.equalsIgnoreCase("Chrome")) {
@@ -34,6 +38,11 @@ public class Keywords {
 		wait.pollingEvery(Duration.ofMillis(500));
 		wait.withMessage("");
 		wait.ignoring(NoSuchElementException.class);
+
+	}
+
+	public void scrollPage() {
+		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
 	}
 
