@@ -7,7 +7,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.allkeywords.Keywords;
-
+/**
+ * This class contains the css selector for the registration page as well as their methods.
+ * @author Sankalpa Moharir
+ *
+ */
 public class RegisterPage {
 	@FindBy(css = "button#btn2")
 	public WebElement registerLink;
@@ -27,12 +31,8 @@ public class RegisterPage {
 	public WebElement femalebtn;
 	@FindBy(css = "input[type='checkbox']")
 	public List<WebElement> hobbies;
-	@FindBy(css = "")
-	public WebElement password;
-	@FindBy(css = "")
-	public WebElement confmPassword;
-	@FindBy(css = "")
-	public WebElement rgsbutton;
+	@FindBy(css = "select#Skills")
+	public WebElement skills;
 	@FindBy(css = "input[ng-model='LastName']")
 	public WebElement lastNameErr;
 	@FindBy(css = "button#submitbtn")
@@ -73,28 +73,28 @@ public class RegisterPage {
 			hobbies.get(i).click();
 		}
 	}
-	public void enterPassword(String text) {
-		password.sendKeys(text);
 
-	}
-
-	public void enterCnfrmPassword(String text) {
-		confmPassword.sendKeys(text);
-
-	}
-
-	public void clickregisterbttn() {
-		rgsbutton.click();
+	public void selectSkill(String text) {
+		keys.scrollPage();
+		keys.dropdown(skills, text);
 
 	}
 
 	public String getmsgofErr(String text) {
 		if (text.equalsIgnoreCase("firstName")) {
 			return firstName.getAttribute("required");
-		} else {
-
+		} else if (text.equalsIgnoreCase("lastName")){
 			return lastNameErr.getAttribute("required");
+		}else if(text.equalsIgnoreCase("email")) {
+			return email.getAttribute("required");	
+		}else if(text.equalsIgnoreCase("phoneNo")) {
+			return phoneNo.getAttribute("required");	
+		}else if(text.equalsIgnoreCase("malebtn")) {
+			return malebtn.getAttribute("required");
+		}else {
+			return "Invalid Input";
 		}
+		
 	}
 
 	public void enteremail(String emailid) {
@@ -115,9 +115,14 @@ public class RegisterPage {
 
 	public void clickOnSubmit() {
 
-		keys.scrollPage();
+		// keys.scrollPage();
 		submit.click();
 
+	}
+
+	public String getmsgabtformat() {
+	
+		return phoneNo.getAttribute("required pattern=^\\d{10}$");
 	}
 
 }
