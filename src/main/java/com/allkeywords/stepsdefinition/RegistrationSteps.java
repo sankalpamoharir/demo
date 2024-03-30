@@ -242,6 +242,20 @@ public class RegistrationSteps {
 		String actualmsg = resg.getmsgabtformat();
 		Assert.assertEquals(actualmsg, errorMsg);
 	}
+	@When("User fills the entire form with email id without Special character ")
+	public void fillRegistrationFormWithoutEmailidSpecialchar() {
+
+		RegisterPage resg = new RegisterPage();
+		resg.clickOnRegisterlink();
+		resg.enterFirstName("Sankalpa");
+		resg.enterLastName("Moharir");
+		resg.enterAddress("Pimpri");
+		resg.enteremail("123.123");
+		resg.selectGender("female");
+		resg.tickHobbies();
+		resg.selectSkill("Java");
+
+	}
 
 
 }

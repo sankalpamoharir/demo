@@ -20,6 +20,11 @@ Scenario: Verifying email follows the required format
   And Click on submit button
  	Then User should get error message about format of email id
  	
+ Scenario: Verifying email follows the required format without Special character
+ 	When User fills the entire form with email id without Special character
+ 	And Click on submit button
+ 	Then User should get error message about format of email id
+ 	
 Scenario: Verifying phone number is required for the registration or not 
  	When User fills the entire form excluding phone number
   And Click on submit button
@@ -34,6 +39,7 @@ Scenario: Verifying phone number accept character for the registration or not
  	When User fills the entire form with phone number not following format:
  		|123654789|
  		|12365478901|
+ 		|123654asdf|
   And Click on submit button
  	Then User should get error message about format of phone number
  	
