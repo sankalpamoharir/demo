@@ -3,6 +3,7 @@ package com.allkeywords;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,7 @@ import com.allkeywords.customerror.BrowserNameError;
 public class Keywords {
 	public static RemoteWebDriver driver;
 	public FluentWait<WebDriver> wait;
+	public static final Logger LOG = Logger.getLogger(Keywords.class);
 
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -50,6 +52,9 @@ public class Keywords {
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 
 	}
+	public void slightScrollPage() {
+		driver.executeScript("window.scrollBy(0,500)");
+	}
 
 	public void launchingUrl(String Url) {
 		driver.get(Url);
@@ -69,6 +74,10 @@ public class Keywords {
 		objSelect.selectByValue(item);
 
 	}
+	public String getTextofelement(String css) {
+		return driver.findElement(By.cssSelector(css)).getText();
+	}
+
 
 	public void closeBrowser() {
 		driver.close();

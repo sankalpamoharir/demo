@@ -1,0 +1,10 @@
+com\allkeywords\stepsdefinition\CucumberHooks.class
+com\allkeywords\Pages\RegisterPage.class
+com\allkeywords\stepsdefinition\PracticeSiteSteps.class
+com\allkeywords\stepsdefinition\RegistrationSteps.class
+com\allkeywords\utilities\PropUtil.class
+com\allkeywords\customerror\BrowserNameError.class
+com\allkeywords\Config.class
+com\allkeywords\base\TestRunner.class
+com\allkeywords\Keywords.class
+com\allkeywords\Pages\PracticesitePage.class
